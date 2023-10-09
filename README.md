@@ -1,8 +1,17 @@
 # EX 3 SubQueries, Views and Joins 
 ## Aim:
 To view implement SubQueries, Views and Joins.
-> Subqueries: Subqueries, also known as nested queries, are SQL queries that are embedded within other queries. They can be used to retrieve data to be used in the main query. Subqueries are enclosed in parentheses and can be placed in various parts of a SQL statement, such as the WHERE clause, SELECT clause, or FROM clause. They are used for tasks like filtering, calculation, or comparison.
 
+> 1.Subqueries: Subqueries, also known as nested queries, are SQL queries that are embedded within other queries. They can be used to retrieve data to be used in the main query. Subqueries are enclosed in parentheses and can be placed in various parts of a SQL statement, such as the WHERE clause, SELECT clause, or FROM clause. They are used for tasks like filtering, calculation, or comparison.
+
+>2.Views: Views in SQL are virtual tables created by a query. They don't store data themselves but represent the result set of a query as a reusable object. Views can simplify complex queries, hide sensitive data, and provide a level of abstraction for end-users. They are particularly useful when you need to present data from multiple tables in a more straightforward manner.
+
+>3.Joins: Joins are used to combine data from two or more tables based on a related column between them. SQL supports various types of joins, including INNER JOIN (returns only matching rows), LEFT JOIN (returns all rows from the left table and matching rows from the right table), RIGHT JOIN (returns all rows from the right table and matching rows from the left table), and FULL OUTER JOIN (returns all rows when there is a match in either the left or right table).
+
+```
+DEVELOPED BY : SUBRAMANIYA PILLAI B
+REG NO: 212221230109
+```
 ## Create employee Table
 ```sql
 CREATE TABLE EMP (EMPNO NUMBER(4) PRIMARY KEY,ENAME VARCHAR2(10),JOB VARCHAR2(9),MGR NUMBER(4),HIREDATE DATE,SAL NUMBER(7,2),COMM NUMBER(7,2),DEPTNO NUMBER(2));
@@ -74,7 +83,7 @@ SELECT ename FROM EMP WHERE sal > (SELECT sal FROM EMP WHERE empno = 7566);
 ```
 
 ### OUTPUT:
-![Alt text](image.png)
+![Alt text](image0.png)
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
@@ -83,7 +92,7 @@ SELECT ename,job,sal FROM EMP WHERE sal = (SELECT MIN(sal) FROM EMP);
 ```
 
 ### OUTPUT:
-![Alt text](image-1.png)
+![Alt text](image1.png)
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
@@ -93,7 +102,7 @@ SELECT ename,job FROM EMP WHERE deptno = 10 AND job IN (SELECT job FROM EMP WHER
 ```
 
 ### OUTPUT:
-![Alt text](image-2.png)
+![Alt text](image2.png)
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
@@ -103,7 +112,7 @@ create view empv5 as select EMPNO,ENAME,JOB from EMP where DEPTNO=10;
 SELECT * FROM empv5;
 ```
 ### OUTPUT:
-![Alt text](image-3.png)
+![Alt text](image3.png)
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
@@ -112,7 +121,7 @@ SELECT * FROM empv5;
 create view empv30 AS select EMPNO,ENAME,SAL from EMP where DEPTNO=30;
 ```
 ### OUTPUT:
-![Alt text](image-4.png)
+![Alt text](image4.png)
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
@@ -122,7 +131,7 @@ create view emplov5 as select EMPNO,ENAME,SAL,JOB from EMP;
 ```
 
 ### OUTPUT:
-![Alt text](image-5.png)
+![Alt text](image5.png)
 ## Create a Customer1 Table
 ```sql
 CREATE TABLE Customer1 (customer_id INT,cust_name VARCHAR(20),city VARCHAR(20),grade INT,salesman_id INT);
@@ -159,7 +168,7 @@ select s.name,c.cust_name,s.city from salesman1 s ,customer1 c where s.city=c.ci
 ```
 
 ### OUTPUT:
-![Alt text](image-6.png)
+![Alt text](image6.png)
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
 
@@ -169,7 +178,7 @@ select s.name,c.cust_name,c.city,s.commission from salesman1 s inner join custom
 ```
 
 ### OUTPUT:
-![Alt text](image-7.png)
+![Alt text](image7.png)
 
 ### Q9) Perform Natural join on both tables
 ### QUERY:
@@ -177,7 +186,7 @@ select s.name,c.cust_name,c.city,s.commission from salesman1 s inner join custom
  select * from salesman1 s natural join customer1 c;
 ```
 ### OUTPUT:
-![Alt text](image-8.png)
+![Alt text](image8.png)
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
@@ -188,10 +197,10 @@ select s.name,c.cust_name,c.city,s.commission from salesman1 s right join custom
 ```
 ### OUTPUT:
 ### Left Join:
-![Alt text](image-9.png)
+![Alt text](image9.png)
 
 ### Right Join:
-![Alt text](image-10.png)
+![Alt text](image10.png)
 
 ## Result:
-Thus, a database is created and implementation of views,subqueries and joins is executed successfully.
+A database has been established, and the successful implementation of views, subqueries, and joins has been carried out.
